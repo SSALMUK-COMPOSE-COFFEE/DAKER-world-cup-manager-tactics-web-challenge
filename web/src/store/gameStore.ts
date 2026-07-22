@@ -17,6 +17,15 @@ import { decodeTactic } from '../data/share'
 
 export type Screen = 'intro' | 'briefing' | 'board' | 'result'
 
+/** 도전장 — 공유 링크로 받은 상대 전술의 재계산 점수. 같은 시나리오 안에서 유지된다 */
+export interface Challenge {
+  nickname: string
+  score: number
+  label: string
+  /** 도전자의 원본 라인업 — 보드가 아직 이 상태 그대로인지 판별용 */
+  lineup: LineupSlot[]
+}
+
 interface GameState {
   screen: Screen
   scenarios: ScenarioMeta[]
@@ -33,11 +42,12 @@ interface GameState {
   formation: string
   engine: EngineOutput | null
   result: Outcome | null
+  challenge: Challenge | null
 
   init: () => Promise<void>
   selectScenario: (meta: ScenarioMeta) => Promise<void>
   /** 공유 링크(#t=...)의 전술을 로드. 검증 실패 시 조용히 무시(인트로 유지) */
-  loadSharedTactic: (encoded: string) => Promise<void>
+  loadSharedTactic: (encoded: string, nickname?: string) => Promise<void>
   goto: (screen: Screen) => void
   movePlayer: (playerId: string, x: number, y: number) => void
   substitute: (benchId: string, outId: string) => void
@@ -80,6 +90,7 @@ export const useGameStore = create<GameState>((set, get) => ({
   formation: '',
   engine: null,
   result: null,
+  challenge: null,
 
   init: async () => {
     const [{ scenarios }, common] = await Promise.all([loadScenarioIndex(), loadCommonComments()])
@@ -107,11 +118,12 @@ export const useGameStore = create<GameState>((set, get) => ({
       subsLeft: match.us.subsLeft,
       formation: match.us.formation,
       result: null,
+      challenge: null,
     }
     set({ ...base, engine: runEngine(base), screen: 'briefing' })
   },
 
-  loadSharedTactic: async (encoded) => {
+  loadSharedTactic: async (encoded, nickname) => {
     const decoded = decodeTactic(encoded)
     if (!decoded) return
     const meta = get().scenarios.find((s) => s.id === decoded.scenarioId && s.status === 'ready')
@@ -140,11 +152,23 @@ export const useGameStore = create<GameState>((set, get) => ({
     if (subbedIn.some((s) => !benchSet.has(s.playerId)) || subbedIn.length > match.us.subsLeft) return
     const usedIds = new Set(subbedIn.map((s) => s.playerId))
 
+    // 도전장: 상대 전술의 점수를 동일 엔진으로 재계산(링크에 점수를 싣지 않아 위조 불가)
+    const challengerEngine = runEngine({ match, lineup: slots, playersById })
+    const challenge: Challenge | null = challengerEngine
+      ? {
+          nickname: nickname?.trim().slice(0, 16) || '이름없는 감독',
+          score: challengerEngine.compositeFinal,
+          label: pickOutcome(match.outcomes, challengerEngine.compositeFinal).label,
+          lineup: slots.map((s) => ({ ...s })),
+        }
+      : null
+
     set({
       lineup: slots,
       bench: match.us.bench.filter((id) => !usedIds.has(id)),
       subsLeft: match.us.subsLeft - subbedIn.length,
-      engine: runEngine({ match, lineup: slots, playersById }),
+      engine: challengerEngine,
+      challenge,
       screen: 'board',
     })
   },

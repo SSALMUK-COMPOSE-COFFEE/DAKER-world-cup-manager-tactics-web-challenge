@@ -22,7 +22,7 @@ const KIND_ICON: Record<string, string> = {
 }
 
 export function ResultScreen() {
-  const { match, players, playersById, engine, result, lineup, commonComments, scenarioComments, goto, resetBoard } =
+  const { match, players, playersById, engine, result, lineup, challenge, commonComments, scenarioComments, goto, resetBoard } =
     useGameStore()
 
   const [phase, setPhase] = useState<'sim' | 'reveal'>('sim')
@@ -187,6 +187,28 @@ export function ResultScreen() {
           </div>
         </div>
       </motion.div>
+
+      {challenge && (() => {
+        const my = engine.compositeFinal
+        const diff = my - challenge.score
+        const tone = diff > 0 ? 'win' : diff < 0 ? 'lose' : 'draw'
+        return (
+          <motion.div
+            className={`challenge-box ${tone}`}
+            initial={{ opacity: 0, y: 16 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.85 }}
+          >
+            <span className="history-label">도전장 대결</span>
+            <p>
+              나 <b>{my.toFixed(1)}점</b> vs {challenge.nickname} <b>{challenge.score.toFixed(1)}점</b>
+              {tone === 'win' && ` — 도전 성공! ${diff.toFixed(1)}점 차로 넘어섰습니다.`}
+              {tone === 'lose' && ` — ${(-diff).toFixed(1)}점이 모자랐습니다. 다시 지휘해 보세요.`}
+              {tone === 'draw' && ' — 완벽한 동점. 한 수만 더 바꿔볼까요?'}
+            </p>
+          </motion.div>
+        )
+      })()}
 
       <motion.div className="history-box" initial={{ opacity: 0, y: 16 }} animate={{ opacity: 1, y: 0 }} transition={{ delay: 0.9 }}>
         <span className="history-label">실제 역사에서는</span>

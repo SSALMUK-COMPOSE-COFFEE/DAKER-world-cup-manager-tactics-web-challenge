@@ -308,6 +308,27 @@ button {
   font-size: 13px;
 }
 
+.challenge-banner {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  width: 100%;
+  padding: 10px 14px;
+  border-radius: 12px;
+  background: color-mix(in srgb, var(--accent) 10%, var(--panel));
+  border: 1px solid color-mix(in srgb, var(--accent) 45%, transparent);
+  font-size: 14px;
+}
+
+.challenge-banner b {
+  color: var(--accent);
+}
+
+.challenge-banner small {
+  color: var(--text-dim);
+  font-size: 12px;
+}
+
 .board-main {
   display: grid;
   grid-template-columns: minmax(0, 1fr) 280px;
@@ -1031,6 +1052,43 @@ button {
 .history-box p {
   font-size: 14px;
   line-height: 1.6;
+}
+
+.challenge-box {
+  width: 100%;
+  background: var(--panel);
+  border: 1px solid var(--line);
+  border-radius: 14px;
+  padding: 16px 18px;
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  text-align: left;
+}
+
+.challenge-box p {
+  font-size: 14px;
+  line-height: 1.6;
+}
+
+.challenge-box.win {
+  border-color: color-mix(in srgb, var(--us) 60%, transparent);
+}
+
+.challenge-box.win b {
+  color: var(--us);
+}
+
+.challenge-box.lose {
+  border-color: color-mix(in srgb, var(--them) 60%, transparent);
+}
+
+.challenge-box.lose b {
+  color: var(--them);
+}
+
+.challenge-box.draw b {
+  color: var(--accent);
 }
 
 .result-composite {

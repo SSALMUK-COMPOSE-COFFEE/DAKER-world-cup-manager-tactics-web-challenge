@@ -1,7 +1,8 @@
-// 전술 공유 링크 — 라인업을 URL 해시에 비트 패킹으로 압축 인코딩(서버 저장 없음).
-// 형식: #t=<scenarioId>.<base64url 32바이트>
+// 전술 공유 링크(도전장) — 라인업을 URL 해시에 비트 패킹으로 압축 인코딩(서버 저장 없음).
+// 형식: #t=<scenarioId>.<base64url 32바이트>[&n=<base64url 닉네임>]
 // 선수당 23비트(스쿼드idx 5 + x 7 + y 7 + 역할idx 4) × 11명 = 253비트 → 32바이트 → 43자.
 // 카톡 등 메신저 공유를 고려해 전체 URL이 80자 안팎이 되도록 설계.
+// 점수는 링크에 싣지 않는다 — 받는 쪽이 동일 엔진으로 재계산하므로 위조 불가.
 import type { LineupSlot, Player } from '../engine/types'
 
 const ROLES = ['GK', 'LB', 'CB', 'RB', 'LWB', 'RWB', 'DM', 'CM', 'AM', 'LM', 'RM', 'LW', 'RW', 'ST', 'CF', 'FW']
@@ -102,8 +103,29 @@ export function decodeTactic(raw: string): { scenarioId: string; slots: DecodedS
   return { scenarioId, slots }
 }
 
-export function buildShareUrl(scenarioId: string, lineup: LineupSlot[], squad: Player[]): string | null {
+export function encodeName(name: string): string {
+  return toB64url(new TextEncoder().encode(name))
+}
+
+export function decodeName(s: string): string | null {
+  const bytes = fromB64url(s)
+  if (!bytes) return null
+  try {
+    return new TextDecoder('utf-8', { fatal: true }).decode(bytes)
+  } catch {
+    return null
+  }
+}
+
+export function buildShareUrl(
+  scenarioId: string,
+  lineup: LineupSlot[],
+  squad: Player[],
+  nickname?: string,
+): string | null {
   const t = encodeTactic(scenarioId, lineup, squad)
   if (!t) return null
-  return `${location.origin}${location.pathname}#t=${t}`
+  const name = nickname?.trim()
+  const n = name ? `&n=${encodeName(name.slice(0, 16))}` : ''
+  return `${location.origin}${location.pathname}#t=${t}${n}`
 }

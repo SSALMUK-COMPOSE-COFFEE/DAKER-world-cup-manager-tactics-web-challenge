@@ -7,6 +7,23 @@ export interface StageRecord {
 }
 
 const KEY = 'planb-progress-v1'
+const NICK_KEY = 'planb-nickname'
+
+export function loadNickname(): string | null {
+  try {
+    return localStorage.getItem(NICK_KEY)
+  } catch {
+    return null
+  }
+}
+
+export function saveNickname(name: string) {
+  try {
+    localStorage.setItem(NICK_KEY, name)
+  } catch {
+    // 저장 불가 환경(시크릿 모드 등)이어도 진행에는 지장 없음
+  }
+}
 
 export function loadProgress(): Record<string, StageRecord> {
   try {

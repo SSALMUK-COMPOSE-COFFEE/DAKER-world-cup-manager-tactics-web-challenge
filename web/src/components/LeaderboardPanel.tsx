@@ -1,12 +1,11 @@
 import { useState } from 'react'
 import { fetchLeaderboard, submitScore, type BoardEntry, type SubmitResult } from '../data/api'
+import { loadNickname, saveNickname } from '../data/progress'
 import type { LineupSlot } from '../engine/types'
-
-const NICK_KEY = 'planb-nickname'
 
 /** 결과 화면 하단 — 이번 전술을 리더보드에 등록하고 스테이지 랭킹을 보여준다 */
 export function LeaderboardPanel({ scenarioId, lineup }: { scenarioId: string; lineup: LineupSlot[] }) {
-  const [nickname, setNickname] = useState(() => localStorage.getItem(NICK_KEY) ?? '')
+  const [nickname, setNickname] = useState(() => loadNickname() ?? '')
   const [state, setState] = useState<'idle' | 'busy' | 'done' | 'offline'>('idle')
   const [result, setResult] = useState<SubmitResult | null>(null)
   const [entries, setEntries] = useState<BoardEntry[]>([])
@@ -14,11 +13,7 @@ export function LeaderboardPanel({ scenarioId, lineup }: { scenarioId: string; l
   const submit = async () => {
     setState('busy')
     const name = nickname.trim() || '이름없는 감독'
-    try {
-      localStorage.setItem(NICK_KEY, name)
-    } catch {
-      // 저장 불가 환경이어도 등록은 계속
-    }
+    saveNickname(name)
     const res = await submitScore(scenarioId, name, lineup)
     if (!res) {
       setState('offline')

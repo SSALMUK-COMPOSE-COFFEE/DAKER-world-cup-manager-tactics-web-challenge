@@ -1,8 +1,10 @@
 import { useState } from 'react'
 import { buildShareUrl } from '../data/share'
+import { loadNickname } from '../data/progress'
 import type { LineupSlot, Player } from '../engine/types'
 
-/** 현재 전술을 공유 링크로 복사. 클립보드 실패 시 프롬프트로 폴백 */
+/** 현재 전술을 도전장 링크로 복사. 클립보드 실패 시 프롬프트로 폴백.
+ *  리더보드에 쓴 감독 이름이 있으면 링크에 함께 실린다. */
 export function ShareButton({
   scenarioId,
   lineup,
@@ -17,7 +19,7 @@ export function ShareButton({
   const [copied, setCopied] = useState(false)
 
   const share = async () => {
-    const url = buildShareUrl(scenarioId, lineup, squad)
+    const url = buildShareUrl(scenarioId, lineup, squad, loadNickname() ?? undefined)
     if (!url) return
     try {
       await navigator.clipboard.writeText(url)
@@ -30,7 +32,7 @@ export function ShareButton({
 
   return (
     <button className={className} onClick={share}>
-      {copied ? '링크 복사됨!' : '전술 공유'}
+      {copied ? '도전장 복사됨!' : '도전장 보내기'}
     </button>
   )
 }

@@ -13,7 +13,7 @@ import type { EnginePlayer } from '../engine/types'
 
 export function BoardScreen() {
   const {
-    match, players, playersById, lineup, bench, subsLeft, formation, engine,
+    match, players, playersById, lineup, bench, subsLeft, formation, engine, challenge,
     commonComments, scenarioComments,
     movePlayer, substitute, setFormation, resetBoard, whistle, goto,
   } = useGameStore()
@@ -67,6 +67,21 @@ export function BoardScreen() {
           </button>
         </div>
       </header>
+
+      {challenge && (
+        <div className="challenge-banner">
+          <span>
+            🎯 <b>{challenge.nickname}</b>의 도전장 — <b>{challenge.score.toFixed(1)}점</b> ·{' '}
+            “{challenge.label}” 을 넘어보세요
+          </span>
+          {challenge.lineup.every((s, i) => {
+            const c = lineup[i]
+            return c && c.playerId === s.playerId && c.x === s.x && c.y === s.y && c.role === s.role
+          }) && (
+            <small>지금 보드가 상대의 전술입니다. 그대로 다듬거나, ‘초기화’로 나만의 전술을 시작하세요.</small>
+          )}
+        </div>
+      )}
 
       <div className="board-main">
         <Pitch
