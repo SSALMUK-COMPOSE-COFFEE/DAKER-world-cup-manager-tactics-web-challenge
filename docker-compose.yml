@@ -4,7 +4,8 @@ services:
       context: .
       dockerfile: web/Dockerfile
     ports:
-      - "8080:80"
+      # 18080~18084는 다른 프로젝트 사용 중(portfolio, todoquest×2, nyo, media-stats)
+      - "127.0.0.1:18085:80"
     restart: unless-stopped
 
   # 리더보드(여유 기능) 채택 시에만: docker compose --profile leaderboard up -d

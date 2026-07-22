@@ -1,4 +1,4 @@
-# Cloudflare Tunnel이 호스트에서 localhost:8080 → 이 컨테이너로 프록시하므로
+# Cloudflare Tunnel이 호스트에서 localhost:18085 → 이 컨테이너로 프록시하므로
 # 컨테이너 안에서는 평문 HTTP만 서빙한다(자동 HTTPS 불필요).
 :80 {
 	root * /srv
