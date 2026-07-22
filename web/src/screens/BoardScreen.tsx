@@ -8,6 +8,7 @@ import { computeHeatmap } from '../engine/heatmap'
 import { pickComment } from '../engine/comments'
 import { lineupSeed } from '../engine/hash'
 import { FORMATIONS } from '../engine/formations'
+import { ShareButton } from '../components/ShareButton'
 import type { EnginePlayer } from '../engine/types'
 
 export function BoardScreen() {
@@ -59,9 +60,12 @@ export function BoardScreen() {
           <span>{players.them.teamCode}</span>
           <em>{match.moment.period === 'ET' ? '연장' : match.moment.period === '1H' ? '전반' : '후반'} {match.moment.minute}'</em>
         </div>
-        <button className="ghost-btn small" onClick={() => setShowHeatmap((v) => !v)}>
-          {showHeatmap ? '히트맵 끄기' : '히트맵 켜기'}
-        </button>
+        <div className="board-header-actions">
+          <ShareButton scenarioId={match.id} lineup={lineup} squad={players.us.players} />
+          <button className="ghost-btn small" onClick={() => setShowHeatmap((v) => !v)}>
+            {showHeatmap ? '히트맵 끄기' : '히트맵 켜기'}
+          </button>
+        </div>
       </header>
 
       <div className="board-main">

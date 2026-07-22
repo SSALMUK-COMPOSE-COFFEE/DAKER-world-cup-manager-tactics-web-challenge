@@ -1,11 +1,14 @@
 import { useEffect, useMemo, useState } from 'react'
 import { AnimatePresence, motion } from 'framer-motion'
 import { useGameStore } from '../store/gameStore'
+import { recordResult } from '../data/progress'
 import { pickComment } from '../engine/comments'
 import { lineupSeed } from '../engine/hash'
 import { simulateTimeline, displayMinute } from '../engine/simulation'
 import { compositeBreakdown, explainResult } from '../engine/report'
 import { SimPitch } from '../components/SimPitch'
+import { LeaderboardPanel } from '../components/LeaderboardPanel'
+import { ShareButton } from '../components/ShareButton'
 
 const KIND_ICON: Record<string, string> = {
   goal: '⚽',
@@ -48,6 +51,17 @@ export function ResultScreen() {
     if (!match || !adjustedResult || !engine) return []
     return simulateTimeline(match, adjustedResult, engine, seed, (id) => playersById.get(id)?.name ?? id)
   }, [match, adjustedResult, engine, seed, playersById])
+
+  // 스테이지 기록 저장(결과 확정 시 1회)
+  useEffect(() => {
+    if (!match || !result || !engine) return
+    recordResult(
+      match.id,
+      engine.compositeFinal,
+      result.label,
+      result.resultScoreUs > result.resultScoreThem,
+    )
+  }, [match, result, engine])
 
   useEffect(() => {
     if (phase !== 'sim' || step >= events.length) return
@@ -189,8 +203,13 @@ export function ResultScreen() {
         </motion.div>
       )}
 
+      <motion.div initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 1.3 }} style={{ width: '100%' }}>
+        <LeaderboardPanel scenarioId={match.id} lineup={lineup} />
+      </motion.div>
+
       <div className="result-actions">
         <button className="primary-btn" onClick={retry}>다시 지휘하기</button>
+        <ShareButton scenarioId={match.id} lineup={lineup} squad={players.us.players} className="ghost-btn" />
         <button className="ghost-btn" onClick={() => goto('intro')}>다른 경기</button>
       </div>
     </div>

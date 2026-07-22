@@ -10,7 +10,14 @@ export default function App() {
   const init = useGameStore((s) => s.init)
 
   useEffect(() => {
-    void init()
+    void init().then(() => {
+      // 공유 링크(#t=...)로 진입한 경우 해당 전술을 보드에 로드
+      const m = location.hash.match(/^#t=(.+)$/)
+      if (m) {
+        history.replaceState(null, '', location.pathname)
+        void useGameStore.getState().loadSharedTactic(decodeURIComponent(m[1]))
+      }
+    })
   }, [init])
 
   switch (screen) {

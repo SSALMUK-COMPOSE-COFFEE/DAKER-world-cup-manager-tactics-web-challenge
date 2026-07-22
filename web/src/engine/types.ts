@@ -101,6 +101,10 @@ export interface ScenarioMeta {
   title: string
   subtitle: string
   tag: string
+  /** 스테이지 번호(추천 플레이 순서). 잠금은 아님 — 심사자는 어디서든 시작 가능 */
+  stage: number
+  /** 난이도 별 개수(1~3) */
+  stars: number
   status: 'ready' | 'planned'
 }
 

@@ -13,6 +13,7 @@ import type {
 } from '../engine/types'
 import { applyFormation } from '../engine/formations'
 import { loadCommonComments, loadScenario, loadScenarioIndex } from '../data/loader'
+import { decodeTactic } from '../data/share'
 
 export type Screen = 'intro' | 'briefing' | 'board' | 'result'
 
@@ -35,6 +36,8 @@ interface GameState {
 
   init: () => Promise<void>
   selectScenario: (meta: ScenarioMeta) => Promise<void>
+  /** 공유 링크(#t=...)의 전술을 로드. 검증 실패 시 조용히 무시(인트로 유지) */
+  loadSharedTactic: (encoded: string) => Promise<void>
   goto: (screen: Screen) => void
   movePlayer: (playerId: string, x: number, y: number) => void
   substitute: (benchId: string, outId: string) => void
@@ -106,6 +109,44 @@ export const useGameStore = create<GameState>((set, get) => ({
       result: null,
     }
     set({ ...base, engine: runEngine(base), screen: 'briefing' })
+  },
+
+  loadSharedTactic: async (encoded) => {
+    const decoded = decodeTactic(encoded)
+    if (!decoded) return
+    const meta = get().scenarios.find((s) => s.id === decoded.scenarioId && s.status === 'ready')
+    if (!meta) return
+    await get().selectScenario(meta)
+    const { match, players, playersById } = get()
+    if (!match || !players) return
+
+    const squad = players.us.players
+    const slots: LineupSlot[] = []
+    const seen = new Set<string>()
+    let gk = 0
+    for (const d of decoded.slots) {
+      const p = squad[d.idx]
+      if (!p || seen.has(p.id)) return
+      seen.add(p.id)
+      if (d.role === 'GK') gk++
+      slots.push({ playerId: p.id, x: d.x, y: d.y, role: d.role })
+    }
+    if (gk !== 1) return
+
+    // 교체 규정 검증: 선발 외 인원은 벤치 출신 + 교체 한도 이내
+    const starters = new Set(match.us.lineup.map((s) => s.playerId))
+    const benchSet = new Set(match.us.bench)
+    const subbedIn = slots.filter((s) => !starters.has(s.playerId))
+    if (subbedIn.some((s) => !benchSet.has(s.playerId)) || subbedIn.length > match.us.subsLeft) return
+    const usedIds = new Set(subbedIn.map((s) => s.playerId))
+
+    set({
+      lineup: slots,
+      bench: match.us.bench.filter((id) => !usedIds.has(id)),
+      subsLeft: match.us.subsLeft - subbedIn.length,
+      engine: runEngine({ match, lineup: slots, playersById }),
+      screen: 'board',
+    })
   },
 
   goto: (screen) => set({ screen }),
