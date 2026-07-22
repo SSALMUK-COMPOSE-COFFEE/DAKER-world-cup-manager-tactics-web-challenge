@@ -1,0 +1,112 @@
+{
+  "id": "kor-ita-2002",
+  "title": "대한민국 vs 이탈리아",
+  "tournament": "2002 FIFA 월드컵 한일 · 16강",
+  "difficulty": "hard",
+  "themeColor": "#1e56a0",
+
+  "moment": {
+    "period": "ET",
+    "minute": 105,
+    "scoreUs": 1,
+    "scoreThem": 1,
+    "timeLeftMin": 15
+  },
+
+  "us": {
+    "formation": "3-4-3",
+    "subsLeft": 2,
+    "lineup": [
+      { "playerId": "kor02-lee-wj",  "x": 6,  "y": 50, "role": "GK" },
+      { "playerId": "kor02-choi-jc", "x": 20, "y": 28, "role": "CB" },
+      { "playerId": "kor02-hong-mb", "x": 16, "y": 50, "role": "CB" },
+      { "playerId": "kor02-kim-ty",  "x": 20, "y": 72, "role": "CB" },
+      { "playerId": "kor02-lee-yp",  "x": 45, "y": 14, "role": "LM" },
+      { "playerId": "kor02-kim-ni",  "x": 40, "y": 40, "role": "CM" },
+      { "playerId": "kor02-yoo-sc",  "x": 40, "y": 62, "role": "CM" },
+      { "playerId": "kor02-song-jg", "x": 45, "y": 86, "role": "RM" },
+      { "playerId": "kor02-seol-kh", "x": 70, "y": 22, "role": "LW" },
+      { "playerId": "kor02-ahn-jh",  "x": 80, "y": 50, "role": "ST" },
+      { "playerId": "kor02-park-js", "x": 70, "y": 78, "role": "RW" }
+    ],
+    "bench": ["kor02-lee-cs", "kor02-cha-dr", "kor02-hwang-sh"]
+  },
+
+  "them": {
+    "formation": "4-3-1-2",
+    "displayLineup": [
+      { "playerId": "ita-buffon",    "x": 94, "y": 50, "role": "GK" },
+      { "playerId": "ita-maldini",   "x": 82, "y": 18, "role": "LB" },
+      { "playerId": "ita-cannavaro", "x": 84, "y": 40, "role": "CB" },
+      { "playerId": "ita-panucci",   "x": 84, "y": 62, "role": "CB" },
+      { "playerId": "ita-zambrotta", "x": 80, "y": 84, "role": "RB" },
+      { "playerId": "ita-dilivio",   "x": 70, "y": 20, "role": "LM" },
+      { "playerId": "ita-tommasi",   "x": 72, "y": 44, "role": "CM" },
+      { "playerId": "ita-zanetti",   "x": 72, "y": 60, "role": "CM" },
+      { "playerId": "ita-totti",     "x": 62, "y": 50, "role": "AM" },
+      { "playerId": "ita-delpiero",  "x": 54, "y": 35, "role": "FW" },
+      { "playerId": "ita-vieri",     "x": 52, "y": 62, "role": "FW" }
+    ],
+    "tacticProfile": {
+      "defLine": 30,
+      "press": 36,
+      "width": 44,
+      "tempo": 42,
+      "directness": 74
+    }
+  },
+
+  "briefing": "연장전, 1-1. 골든골 시대 — 다음 골을 넣는 팀이 8강에 갑니다. 카나바로와 말디니의 벽은 견고하고, 비에리의 한 방은 여전히 위협적입니다. 전설이 되느냐, 여기서 멈추느냐. 당신의 한 수는?",
+
+  "actualHistory": {
+    "finalScoreUs": 2,
+    "finalScoreThem": 1,
+    "summary": "후반 추가시간 설기현의 극적인 동점골, 그리고 연장 후반 117분 안정환의 헤더 골든골. 2-1 — 세계를 놀라게 한 8강 진출, 한국 축구 역사상 가장 뜨거운 밤."
+  },
+
+  "outcomes": [
+    {
+      "minScore": 75,
+      "resultScoreUs": 2, "resultScoreThem": 1,
+      "label": "전설을 넘어서",
+      "narrative": "기다림은 필요 없었다. 연장 전반, 당신의 전술이 즉시 그물을 갈랐다. 골든골 — 역사보다 빠르고, 역사보다 완벽하게.",
+      "goals": [
+        { "minute": 108, "scorer": "kor02-ahn-jh", "type": "counter" }
+      ]
+    },
+    {
+      "minScore": 69,
+      "resultScoreUs": 2, "resultScoreThem": 1,
+      "label": "골든골, 다시 한 번",
+      "narrative": "연장 후반 117분, 왼쪽에서 올라온 크로스, 그리고 헤더. 그날의 전율이 당신의 손으로 재현됐다. 2-1.",
+      "goals": [
+        { "minute": 117, "scorer": "kor02-ahn-jh", "type": "cross" }
+      ]
+    },
+    {
+      "minScore": 58,
+      "resultScoreUs": 1, "resultScoreThem": 1,
+      "label": "승부차기의 운명",
+      "narrative": "120분의 혈투에도 균형은 깨지지 않았다. 이제 승부차기 — 여기서부터는 신의 영역이다. 1-1.",
+      "goals": []
+    },
+    {
+      "minScore": 48,
+      "resultScoreUs": 1, "resultScoreThem": 2,
+      "label": "비에리의 비수",
+      "narrative": "한순간의 빈틈, 비에리는 그것으로 충분했다. 골든골을 내주며 전설은 여기서 멈춘다. 1-2.",
+      "goals": [
+        { "minute": 112, "scorer": "ita-vieri", "type": "counter", "against": true }
+      ]
+    },
+    {
+      "minScore": 0,
+      "resultScoreUs": 1, "resultScoreThem": 2,
+      "label": "무너진 전설",
+      "narrative": "무리한 전진의 대가는 즉각적이었다. 연장 전반, 토티의 침투 패스 한 번에 모든 것이 끝났다. 1-2.",
+      "goals": [
+        { "minute": 106, "scorer": "ita-vieri", "type": "counter", "against": true }
+      ]
+    }
+  ]
+}

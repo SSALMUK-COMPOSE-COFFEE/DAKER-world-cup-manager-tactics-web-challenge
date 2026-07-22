@@ -1,28 +1,34 @@
 {
   "scenarios": [
     {
+      "id": "kor-uru-2022",
+      "dir": "kor-uru-2022",
+      "title": "대한민국 vs 우루과이",
+      "subtitle": "2022 카타르 · 후반 70분 · 0-0",
+      "tag": "교착을 깨라",
+      "stage": 1,
+      "stars": 1,
+      "status": "ready"
+    },
+    {
       "id": "kor-por-2022",
       "dir": "kor-por-2022",
       "title": "대한민국 vs 포르투갈",
       "subtitle": "2022 카타르 · 후반 78분 · 0-1",
       "tag": "기적을 재현하라",
+      "stage": 2,
+      "stars": 2,
       "status": "ready"
-    },
-    {
-      "id": "kor-uru-2022",
-      "dir": "kor-uru-2022",
-      "title": "대한민국 vs 우루과이",
-      "subtitle": "2022 카타르 · 후반 · 0-0",
-      "tag": "교착을 깨라",
-      "status": "planned"
     },
     {
       "id": "kor-ita-2002",
       "dir": "kor-ita-2002",
       "title": "대한민국 vs 이탈리아",
-      "subtitle": "2002 · 연장 · 골든골",
+      "subtitle": "2002 한일 · 연장 · 1-1 골든골",
       "tag": "레전드의 한 수",
-      "status": "planned"
+      "stage": 3,
+      "stars": 3,
+      "status": "ready"
     }
   ]
 }

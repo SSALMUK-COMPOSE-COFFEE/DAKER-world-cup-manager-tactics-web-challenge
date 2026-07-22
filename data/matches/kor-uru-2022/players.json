@@ -1,0 +1,44 @@
+{
+  "us": {
+    "teamCode": "KOR",
+    "teamName": "대한민국",
+    "year": 2022,
+    "players": [
+      { "id": "kor-kim-sg", "name": "김승규", "pos": "GK", "overall": 80, "attrs": { "pace": 55, "shooting": 20, "passing": 62, "dribbling": 45, "defending": 80, "physical": 78 } },
+      { "id": "kor-kim-mh", "name": "김문환", "pos": "DF", "overall": 76, "attrs": { "pace": 82, "shooting": 45, "passing": 68, "dribbling": 70, "defending": 74, "physical": 72 } },
+      { "id": "kor-kim-mj", "name": "김민재", "pos": "DF", "overall": 87, "attrs": { "pace": 80, "shooting": 40, "passing": 74, "dribbling": 66, "defending": 89, "physical": 88 } },
+      { "id": "kor-kim-yg", "name": "김영권", "pos": "DF", "overall": 79, "attrs": { "pace": 68, "shooting": 38, "passing": 70, "dribbling": 60, "defending": 80, "physical": 79 } },
+      { "id": "kor-kim-js", "name": "김진수", "pos": "DF", "overall": 78, "attrs": { "pace": 79, "shooting": 48, "passing": 74, "dribbling": 72, "defending": 74, "physical": 73 } },
+      { "id": "kor-jung-wy", "name": "정우영", "pos": "MF", "overall": 77, "attrs": { "pace": 62, "shooting": 66, "passing": 80, "dribbling": 72, "defending": 70, "physical": 71 } },
+      { "id": "kor-hwang-ib", "name": "황인범", "pos": "MF", "overall": 79, "attrs": { "pace": 70, "shooting": 70, "passing": 82, "dribbling": 78, "defending": 66, "physical": 68 } },
+      { "id": "kor-lee-js", "name": "이재성", "pos": "MF", "overall": 80, "attrs": { "pace": 76, "shooting": 74, "passing": 80, "dribbling": 80, "defending": 62, "physical": 70 } },
+      { "id": "kor-son", "name": "손흥민", "pos": "FW", "overall": 89, "attrs": { "pace": 88, "shooting": 87, "passing": 82, "dribbling": 86, "defending": 43, "physical": 69 } },
+      { "id": "kor-na-sh", "name": "나상호", "pos": "FW", "overall": 75, "attrs": { "pace": 84, "shooting": 72, "passing": 68, "dribbling": 78, "defending": 45, "physical": 64 } },
+      { "id": "kor-hwang-uj", "name": "황의조", "pos": "FW", "overall": 77, "attrs": { "pace": 72, "shooting": 78, "passing": 65, "dribbling": 70, "defending": 38, "physical": 75 } },
+      { "id": "kor-cho-gs", "name": "조규성", "pos": "FW", "overall": 78, "attrs": { "pace": 74, "shooting": 79, "passing": 62, "dribbling": 66, "defending": 40, "physical": 84 } },
+      { "id": "kor-song-mg", "name": "송민규", "pos": "FW", "overall": 74, "attrs": { "pace": 80, "shooting": 70, "passing": 68, "dribbling": 76, "defending": 42, "physical": 63 } },
+      { "id": "kor-kwon-ch", "name": "권창훈", "pos": "MF", "overall": 74, "attrs": { "pace": 74, "shooting": 72, "passing": 74, "dribbling": 78, "defending": 50, "physical": 62 } },
+      { "id": "kor-son-jh", "name": "손준호", "pos": "MF", "overall": 76, "attrs": { "pace": 66, "shooting": 66, "passing": 76, "dribbling": 70, "defending": 74, "physical": 74 } },
+      { "id": "kor-baek-sh", "name": "백승호", "pos": "MF", "overall": 77, "attrs": { "pace": 68, "shooting": 72, "passing": 78, "dribbling": 76, "defending": 68, "physical": 76 } },
+      { "id": "kor-cho-ym", "name": "조유민", "pos": "DF", "overall": 73, "attrs": { "pace": 66, "shooting": 35, "passing": 64, "dribbling": 56, "defending": 75, "physical": 78 } }
+    ]
+  },
+  "them": {
+    "teamCode": "URU",
+    "teamName": "우루과이",
+    "year": 2022,
+    "players": [
+      { "id": "uru-rochet", "name": "로체트", "pos": "GK", "overall": 83, "attrs": { "pace": 55, "shooting": 20, "passing": 70, "dribbling": 50, "defending": 83, "physical": 80 } },
+      { "id": "uru-caceres", "name": "카세레스", "pos": "DF", "overall": 79, "attrs": { "pace": 76, "shooting": 45, "passing": 70, "dribbling": 68, "defending": 79, "physical": 78 } },
+      { "id": "uru-godin", "name": "고딘", "pos": "DF", "overall": 84, "attrs": { "pace": 62, "shooting": 40, "passing": 72, "dribbling": 58, "defending": 87, "physical": 85 } },
+      { "id": "uru-gimenez", "name": "히메네스", "pos": "DF", "overall": 83, "attrs": { "pace": 72, "shooting": 38, "passing": 70, "dribbling": 60, "defending": 86, "physical": 84 } },
+      { "id": "uru-olivera", "name": "올리베라", "pos": "DF", "overall": 78, "attrs": { "pace": 80, "shooting": 50, "passing": 72, "dribbling": 74, "defending": 76, "physical": 74 } },
+      { "id": "uru-valverde", "name": "발베르데", "pos": "MF", "overall": 86, "attrs": { "pace": 85, "shooting": 82, "passing": 84, "dribbling": 80, "defending": 76, "physical": 84 } },
+      { "id": "uru-bentancur", "name": "벤탄쿠르", "pos": "MF", "overall": 83, "attrs": { "pace": 74, "shooting": 70, "passing": 84, "dribbling": 82, "defending": 76, "physical": 76 } },
+      { "id": "uru-vecino", "name": "베시노", "pos": "MF", "overall": 79, "attrs": { "pace": 72, "shooting": 68, "passing": 74, "dribbling": 70, "defending": 76, "physical": 80 } },
+      { "id": "uru-arrascaeta", "name": "데 아라스카에타", "pos": "MF", "overall": 82, "attrs": { "pace": 76, "shooting": 78, "passing": 83, "dribbling": 84, "defending": 52, "physical": 64 } },
+      { "id": "uru-suarez", "name": "수아레스", "pos": "FW", "overall": 84, "attrs": { "pace": 68, "shooting": 88, "passing": 78, "dribbling": 80, "defending": 45, "physical": 78 } },
+      { "id": "uru-nunez", "name": "누녜스", "pos": "FW", "overall": 82, "attrs": { "pace": 91, "shooting": 81, "passing": 65, "dribbling": 78, "defending": 40, "physical": 82 } }
+    ]
+  }
+}

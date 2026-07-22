@@ -1,0 +1,114 @@
+{
+  "id": "kor-uru-2022",
+  "title": "대한민국 vs 우루과이",
+  "tournament": "2022 FIFA 월드컵 카타르 · 조별리그 H조 1차전",
+  "difficulty": "normal",
+  "themeColor": "#5aa7d6",
+
+  "moment": {
+    "period": "2H",
+    "minute": 70,
+    "scoreUs": 0,
+    "scoreThem": 0,
+    "timeLeftMin": 20
+  },
+
+  "us": {
+    "formation": "4-2-3-1",
+    "subsLeft": 3,
+    "lineup": [
+      { "playerId": "kor-kim-sg", "x": 6,  "y": 50, "role": "GK" },
+      { "playerId": "kor-kim-js", "x": 30, "y": 16, "role": "LB" },
+      { "playerId": "kor-kim-yg", "x": 22, "y": 38, "role": "CB" },
+      { "playerId": "kor-kim-mj", "x": 22, "y": 62, "role": "CB" },
+      { "playerId": "kor-kim-mh", "x": 30, "y": 84, "role": "RB" },
+      { "playerId": "kor-hwang-ib", "x": 42, "y": 38, "role": "DM" },
+      { "playerId": "kor-jung-wy", "x": 42, "y": 62, "role": "DM" },
+      { "playerId": "kor-son",     "x": 72, "y": 22, "role": "LW" },
+      { "playerId": "kor-lee-js",  "x": 60, "y": 50, "role": "AM" },
+      { "playerId": "kor-na-sh",   "x": 70, "y": 78, "role": "RW" },
+      { "playerId": "kor-hwang-uj", "x": 82, "y": 50, "role": "ST" }
+    ],
+    "bench": ["kor-cho-gs", "kor-song-mg", "kor-kwon-ch", "kor-son-jh", "kor-baek-sh", "kor-cho-ym"]
+  },
+
+  "them": {
+    "formation": "4-4-2",
+    "displayLineup": [
+      { "playerId": "uru-rochet",     "x": 94, "y": 50, "role": "GK" },
+      { "playerId": "uru-olivera",    "x": 76, "y": 18, "role": "LB" },
+      { "playerId": "uru-godin",      "x": 80, "y": 40, "role": "CB" },
+      { "playerId": "uru-gimenez",    "x": 80, "y": 60, "role": "CB" },
+      { "playerId": "uru-caceres",    "x": 76, "y": 82, "role": "RB" },
+      { "playerId": "uru-arrascaeta", "x": 62, "y": 20, "role": "LM" },
+      { "playerId": "uru-bentancur",  "x": 64, "y": 42, "role": "CM" },
+      { "playerId": "uru-vecino",     "x": 64, "y": 60, "role": "CM" },
+      { "playerId": "uru-valverde",   "x": 60, "y": 80, "role": "RM" },
+      { "playerId": "uru-suarez",     "x": 48, "y": 42, "role": "FW" },
+      { "playerId": "uru-nunez",      "x": 46, "y": 62, "role": "FW" }
+    ],
+    "tacticProfile": {
+      "defLine": 42,
+      "press": 48,
+      "width": 52,
+      "tempo": 48,
+      "directness": 66
+    }
+  },
+
+  "briefing": "팽팽한 수싸움이 이어지고 있습니다. 고딘의 수비는 견고하고, 수아레스와 누녜스는 단 한 번의 역습을 노립니다. 20분 안에 균형을 깨지 못하면 실제 역사처럼 0-0 — 당신이라면 이 교착을 깰 수 있습니까?",
+
+  "actualHistory": {
+    "finalScoreUs": 0,
+    "finalScoreThem": 0,
+    "summary": "치열한 수싸움 끝에 0-0 무승부. 우루과이는 두 차례 골대를 맞혔고, 한국은 끝내 결정적 한 방을 만들지 못했다."
+  },
+
+  "outcomes": [
+    {
+      "minScore": 88,
+      "resultScoreUs": 2, "resultScoreThem": 0,
+      "label": "완벽한 지배",
+      "narrative": "교착을 깬 정도가 아니다 — 경기를 지배했다. 2-0, 역사가 부러워할 90분.",
+      "goals": [
+        { "minute": 79, "scorer": "kor-hwang-uj", "type": "cross" },
+        { "minute": 89, "scorer": "kor-son", "type": "counter" }
+      ]
+    },
+    {
+      "minScore": 80,
+      "resultScoreUs": 1, "resultScoreThem": 0,
+      "label": "역사를 바꾸다",
+      "narrative": "실제 역사에는 없던 한 골. 당신의 승부수가 0의 균형을 깨뜨렸다. 1-0.",
+      "goals": [
+        { "minute": 84, "scorer": "kor-hwang-uj", "type": "set" }
+      ]
+    },
+    {
+      "minScore": 64,
+      "resultScoreUs": 0, "resultScoreThem": 0,
+      "label": "그대로 0-0",
+      "narrative": "몇 번의 진동은 있었지만 균형은 끝내 깨지지 않았다. 역사 그대로, 0-0.",
+      "goals": []
+    },
+    {
+      "minScore": 52,
+      "resultScoreUs": 0, "resultScoreThem": 1,
+      "label": "통한의 역습",
+      "narrative": "균형을 깨려던 욕심이 뒷공간을 열었다. 누녜스의 질주 한 번에 0-1.",
+      "goals": [
+        { "minute": 87, "scorer": "uru-nunez", "type": "counter", "against": true }
+      ]
+    },
+    {
+      "minScore": 0,
+      "resultScoreUs": 0, "resultScoreThem": 2,
+      "label": "무너진 뒷문",
+      "narrative": "열어젖힌 뒷문으로 우루과이가 두 번 침입했다. 0-2 — 승부수가 아니라 도박이었다.",
+      "goals": [
+        { "minute": 82, "scorer": "uru-nunez", "type": "counter", "against": true },
+        { "minute": 90, "scorer": "uru-suarez", "type": "counter", "against": true }
+      ]
+    }
+  ]
+}

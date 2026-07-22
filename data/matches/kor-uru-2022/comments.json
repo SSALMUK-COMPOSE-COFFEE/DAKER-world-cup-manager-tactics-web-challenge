@@ -1,0 +1,25 @@
+[
+  {
+    "id": "uru-counter-threat",
+    "slot": "tactic",
+    "when": [{ "metric": "RISK", "op": ">=", "value": 62 }],
+    "priority": 62,
+    "lines": [
+      "누녜스의 스피드는 진짜입니다. 뒷공간을 이만큼 열어주면 한 방에 뚫립니다.",
+      "수아레스와 누녜스가 역습 한 번을 기다리고 있습니다. 라인 관리가 생명입니다."
+    ]
+  },
+  {
+    "id": "uru-breakthrough",
+    "slot": "tactic",
+    "when": [
+      { "metric": "xG", "op": ">=", "value": 1.2 },
+      { "metric": "BALANCE", "op": ">", "value": 75 }
+    ],
+    "priority": 46,
+    "lines": [
+      "고딘의 벽에 균열이 보입니다. 이 흐름을 끝까지 밀어붙이세요.",
+      "교착이 흔들리고 있습니다. 지금이 균형을 깰 순간입니다."
+    ]
+  }
+]
