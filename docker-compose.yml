@@ -10,7 +10,11 @@ services:
   # 리더보드(여유 기능) 채택 시에만: docker compose --profile leaderboard up -d
   server:
     profiles: [leaderboard]
-    build: ./server
+    build:
+      context: .
+      dockerfile: server/Dockerfile
+    environment:
+      COOKIE_PATH: /planb
     volumes:
       - ./server-data:/data
     restart: unless-stopped

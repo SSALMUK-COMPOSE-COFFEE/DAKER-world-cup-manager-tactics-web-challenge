@@ -6,8 +6,8 @@
 	try_files {path} /index.html
 	file_server
 
-	# 리더보드 채택 시 주석 해제
-	# handle /api/* {
-	# 	reverse_proxy server:8000
-	# }
+	# 리더보드 서버(compose profile: leaderboard). 서버 미기동 시 /api만 502, 코어 앱은 무관.
+	handle /api/* {
+		reverse_proxy server:8000
+	}
 }
