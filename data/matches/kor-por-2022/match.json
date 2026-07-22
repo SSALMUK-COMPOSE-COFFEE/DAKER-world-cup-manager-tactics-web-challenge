@@ -1,0 +1,115 @@
+{
+  "id": "kor-por-2022",
+  "title": "대한민국 vs 포르투갈",
+  "tournament": "2022 FIFA 월드컵 카타르 · 조별리그 H조 3차전",
+  "difficulty": "normal",
+  "themeColor": "#c60c30",
+
+  "moment": {
+    "period": "2H",
+    "minute": 78,
+    "scoreUs": 0,
+    "scoreThem": 1,
+    "timeLeftMin": 15
+  },
+
+  "us": {
+    "formation": "4-2-3-1",
+    "subsLeft": 3,
+    "lineup": [
+      { "playerId": "kor-kim-sg", "x": 6,  "y": 50, "role": "GK" },
+      { "playerId": "kor-kim-js", "x": 30, "y": 16, "role": "LB" },
+      { "playerId": "kor-kim-yg", "x": 22, "y": 38, "role": "CB" },
+      { "playerId": "kor-kim-mj", "x": 22, "y": 62, "role": "CB" },
+      { "playerId": "kor-kim-mh", "x": 30, "y": 84, "role": "RB" },
+      { "playerId": "kor-baek-sh", "x": 42, "y": 38, "role": "DM" },
+      { "playerId": "kor-jung-wy", "x": 42, "y": 62, "role": "DM" },
+      { "playerId": "kor-son",     "x": 72, "y": 22, "role": "LW" },
+      { "playerId": "kor-lee-js",  "x": 60, "y": 50, "role": "AM" },
+      { "playerId": "kor-na-sh",   "x": 70, "y": 78, "role": "RW" },
+      { "playerId": "kor-cho-gs",  "x": 82, "y": 50, "role": "ST" }
+    ],
+    "bench": ["kor-hwang-hc", "kor-hwang-ib", "kor-son-jh", "kor-kwon-ch", "kor-song-mg", "kor-cho-ym"]
+  },
+
+  "them": {
+    "formation": "4-4-2",
+    "displayLineup": [
+      { "playerId": "por-costa",     "x": 94, "y": 50, "role": "GK" },
+      { "playerId": "por-guerreiro", "x": 78, "y": 18, "role": "LB" },
+      { "playerId": "por-pepe",      "x": 82, "y": 40, "role": "CB" },
+      { "playerId": "por-dias",      "x": 82, "y": 60, "role": "CB" },
+      { "playerId": "por-cancelo",   "x": 78, "y": 82, "role": "RB" },
+      { "playerId": "por-horta",     "x": 66, "y": 22, "role": "LM" },
+      { "playerId": "por-palhinha",  "x": 68, "y": 45, "role": "CM" },
+      { "playerId": "por-vitinha",   "x": 66, "y": 58, "role": "CM" },
+      { "playerId": "por-bsilva",    "x": 64, "y": 80, "role": "RM" },
+      { "playerId": "por-felix",     "x": 52, "y": 42, "role": "FW" },
+      { "playerId": "por-gramos",    "x": 52, "y": 58, "role": "FW" }
+    ],
+    "tacticProfile": {
+      "defLine": 32,
+      "press": 38,
+      "width": 48,
+      "tempo": 44,
+      "directness": 62
+    }
+  },
+
+  "briefing": "리드를 지키려 상대가 진영을 내리고 문을 걸어 잠갔습니다. 역습 한 방이 위협적이지만, 15분 안에 한 골을 만들지 못하면 조별리그 탈락입니다. 당신의 플랜 B는?",
+
+  "actualHistory": {
+    "finalScoreUs": 2,
+    "finalScoreThem": 1,
+    "summary": "후반 추가시간, 손흥민의 폭발적인 질주에 이은 황희찬의 침착한 마무리로 2-1 극장 역전승. 대한민국은 16강에 진출했다."
+  },
+
+  "outcomes": [
+    {
+      "minScore": 82,
+      "resultScoreUs": 3, "resultScoreThem": 1,
+      "label": "완벽한 플랜 B",
+      "narrative": "역사보다 완벽한 15분. 당신의 플랜 B가 그날의 기적마저 넘어섰다. 3-1.",
+      "goals": [
+        { "minute": 82, "scorer": "kor-cho-gs", "type": "cross" },
+        { "minute": 87, "scorer": "kor-son", "type": "fk" },
+        { "minute": 90, "scorer": "kor-hwang-hc", "type": "counter" }
+      ]
+    },
+    {
+      "minScore": 75,
+      "resultScoreUs": 2, "resultScoreThem": 1,
+      "label": "기적의 재현",
+      "narrative": "추가시간, 당신이 던진 승부수가 마침내 그물을 흔들었다. 2-1 — 그날의 기적이 당신의 손으로 재현됐다.",
+      "goals": [
+        { "minute": 84, "scorer": "kor-cho-gs", "type": "cross" },
+        { "minute": 90, "scorer": "kor-hwang-hc", "type": "counter" }
+      ]
+    },
+    {
+      "minScore": 66,
+      "resultScoreUs": 1, "resultScoreThem": 1,
+      "label": "극적인 동점",
+      "narrative": "끈질긴 압박이 만든 한 골. 승리는 아니지만, 당신은 포기하지 않았다. 1-1.",
+      "goals": [
+        { "minute": 88, "scorer": "kor-son", "type": "fk" }
+      ]
+    },
+    {
+      "minScore": 50,
+      "resultScoreUs": 0, "resultScoreThem": 1,
+      "label": "아쉬운 패배",
+      "narrative": "몇 번의 위협은 있었지만 문은 열리지 않았다. 0-1.",
+      "goals": []
+    },
+    {
+      "minScore": 0,
+      "resultScoreUs": 0, "resultScoreThem": 2,
+      "label": "역습에 무너지다",
+      "narrative": "무리한 전진이 뒷공간을 열었다. 상대의 역습 한 방에 0-2.",
+      "goals": [
+        { "minute": 86, "scorer": "por-felix", "type": "counter", "against": true }
+      ]
+    }
+  ]
+}

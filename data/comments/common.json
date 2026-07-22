@@ -1,0 +1,146 @@
+[
+  {
+    "id": "tactic-default",
+    "slot": "tactic",
+    "when": [],
+    "priority": 0,
+    "lines": [
+      "나쁘지 않은 균형입니다. 다만 이대로면 경기도 그대로 흘러갈 겁니다.",
+      "안정적인 배치입니다, 감독님. 하지만 지금 우리에게 필요한 건 변화일지도 모릅니다."
+    ]
+  },
+  {
+    "id": "tactic-high-risk",
+    "slot": "tactic",
+    "when": [{ "metric": "RISK", "op": ">=", "value": 70 }],
+    "priority": 60,
+    "lines": [
+      "라인이 너무 높습니다. 역습 한 방이면 끝장날 수 있습니다.",
+      "도박에 가까운 전진입니다. 뒷공간이 훤히 열려 있어요."
+    ]
+  },
+  {
+    "id": "tactic-low-balance",
+    "slot": "tactic",
+    "when": [{ "metric": "BALANCE", "op": "<=", "value": 75 }],
+    "priority": 55,
+    "lines": [
+      "진형이 무너져 있습니다. 뒤에 남은 인원을 확인하세요.",
+      "공격에 너무 쏠렸습니다. 허리가 비면 세컨볼을 전부 내줍니다."
+    ]
+  },
+  {
+    "id": "tactic-gap-left",
+    "slot": "tactic",
+    "when": [{ "metric": "coverageGapLeft", "op": ">=", "value": 0.55 }],
+    "priority": 70,
+    "lines": [
+      "왼쪽 측면이 비었습니다. 상대 윙어가 그 공간을 노릴 겁니다.",
+      "왼쪽이 허전합니다. 풀백의 커버 범위를 확인하세요."
+    ]
+  },
+  {
+    "id": "tactic-gap-right",
+    "slot": "tactic",
+    "when": [{ "metric": "coverageGapRight", "op": ">=", "value": 0.55 }],
+    "priority": 70,
+    "lines": [
+      "오른쪽 측면이 비었습니다. 크로스 한 번에 흔들릴 수 있어요.",
+      "오른쪽 커버가 얇습니다. 상대가 그쪽으로 전환하면 위험합니다."
+    ]
+  },
+  {
+    "id": "tactic-high-press",
+    "slot": "tactic",
+    "when": [
+      { "metric": "PRESS", "op": ">=", "value": 65 },
+      { "metric": "RISK", "op": "<", "value": 70 }
+    ],
+    "priority": 50,
+    "lines": [
+      "전방 압박이 살아 있습니다. 상대 빌드업이 급해질 겁니다.",
+      "좋은 압박 높이입니다. 볼을 뺏는 위치가 곧 찬스의 위치입니다."
+    ]
+  },
+  {
+    "id": "tactic-attacking-edge",
+    "slot": "tactic",
+    "when": [
+      { "metric": "xG", "op": ">=", "value": 1.2 },
+      { "metric": "BALANCE", "op": ">", "value": 75 }
+    ],
+    "priority": 45,
+    "lines": [
+      "공격의 날이 서 있습니다. 균형도 나쁘지 않아요 — 승부를 걸어볼 만합니다.",
+      "찬스 기대치가 올라왔습니다. 이 흐름이면 한 골은 만들 수 있습니다."
+    ]
+  },
+  {
+    "id": "tactic-too-passive",
+    "slot": "tactic",
+    "when": [{ "metric": "xG", "op": "<", "value": 0.7 }],
+    "priority": 58,
+    "lines": [
+      "이 배치로는 골이 나오기 어렵습니다. 지금은 지키는 게 아니라 넣어야 할 때입니다.",
+      "공격 기대치가 너무 낮습니다. 전방에 숫자를 더해야 합니다."
+    ]
+  },
+  {
+    "id": "result-default",
+    "slot": "result",
+    "when": [],
+    "priority": 0,
+    "lines": [
+      "결과가 어떻든, 결정을 내린 건 당신이었습니다. 그게 감독의 일입니다."
+    ]
+  },
+  {
+    "id": "result-triumph",
+    "slot": "result",
+    "when": [{ "metric": "compositeFinal", "op": ">=", "value": 75 }],
+    "priority": 50,
+    "lines": [
+      "리스크를 감수한 승부수가 적중했습니다. 그날의 답과 당신의 답을 비교해 보세요.",
+      "공격과 균형, 두 마리 토끼를 다 잡은 지휘였습니다. 벤치에서 봐도 짜릿했습니다."
+    ]
+  },
+  {
+    "id": "result-close",
+    "slot": "result",
+    "when": [
+      { "metric": "compositeFinal", "op": ">=", "value": 55 },
+      { "metric": "compositeFinal", "op": "<", "value": 75 }
+    ],
+    "priority": 50,
+    "lines": [
+      "아깝습니다. 방향은 옳았지만 마지막 반 발이 부족했어요.",
+      "나쁘지 않은 선택이었습니다. 다만 결정적 한 수가 하나 더 필요했습니다."
+    ]
+  },
+  {
+    "id": "result-fail-passive",
+    "slot": "result",
+    "when": [
+      { "metric": "compositeFinal", "op": "<", "value": 55 },
+      { "metric": "xG", "op": "<", "value": 0.9 }
+    ],
+    "priority": 55,
+    "lines": [
+      "너무 조심스러웠습니다. 골이 필요한 순간에는 리스크도 전술입니다.",
+      "지지 않으려는 축구로는 이길 수 없었습니다. 다음엔 더 과감하게."
+    ]
+  },
+  {
+    "id": "result-fail-reckless",
+    "slot": "result",
+    "when": [
+      { "metric": "compositeFinal", "op": "<", "value": 55 },
+      { "metric": "RISK", "op": ">=", "value": 70 }
+    ],
+    "priority": 56,
+    "lines": [
+      "용감했지만 무모했습니다. 뒷문을 열어둔 대가가 컸어요.",
+      "승부수는 좋았지만 보험이 없었습니다. 최소한의 뒷선은 남겨둬야 합니다."
+    ]
+  }
+]

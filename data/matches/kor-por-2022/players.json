@@ -1,0 +1,44 @@
+{
+  "us": {
+    "teamCode": "KOR",
+    "teamName": "대한민국",
+    "year": 2022,
+    "players": [
+      { "id": "kor-kim-sg", "name": "김승규", "pos": "GK", "overall": 80, "attrs": { "pace": 55, "shooting": 20, "passing": 62, "dribbling": 45, "defending": 80, "physical": 78 } },
+      { "id": "kor-kim-mh", "name": "김문환", "pos": "DF", "overall": 76, "attrs": { "pace": 82, "shooting": 45, "passing": 68, "dribbling": 70, "defending": 74, "physical": 72 } },
+      { "id": "kor-kim-mj", "name": "김민재", "pos": "DF", "overall": 87, "attrs": { "pace": 80, "shooting": 40, "passing": 74, "dribbling": 66, "defending": 89, "physical": 88 } },
+      { "id": "kor-kim-yg", "name": "김영권", "pos": "DF", "overall": 79, "attrs": { "pace": 68, "shooting": 38, "passing": 70, "dribbling": 60, "defending": 80, "physical": 79 } },
+      { "id": "kor-kim-js", "name": "김진수", "pos": "DF", "overall": 78, "attrs": { "pace": 79, "shooting": 48, "passing": 74, "dribbling": 72, "defending": 74, "physical": 73 } },
+      { "id": "kor-jung-wy", "name": "정우영", "pos": "MF", "overall": 77, "attrs": { "pace": 62, "shooting": 66, "passing": 80, "dribbling": 72, "defending": 70, "physical": 71 } },
+      { "id": "kor-baek-sh", "name": "백승호", "pos": "MF", "overall": 77, "attrs": { "pace": 68, "shooting": 72, "passing": 78, "dribbling": 76, "defending": 68, "physical": 76 } },
+      { "id": "kor-lee-js", "name": "이재성", "pos": "MF", "overall": 80, "attrs": { "pace": 76, "shooting": 74, "passing": 80, "dribbling": 80, "defending": 62, "physical": 70 } },
+      { "id": "kor-son", "name": "손흥민", "pos": "FW", "overall": 89, "attrs": { "pace": 88, "shooting": 87, "passing": 82, "dribbling": 86, "defending": 43, "physical": 69 } },
+      { "id": "kor-na-sh", "name": "나상호", "pos": "FW", "overall": 75, "attrs": { "pace": 84, "shooting": 72, "passing": 68, "dribbling": 78, "defending": 45, "physical": 64 } },
+      { "id": "kor-cho-gs", "name": "조규성", "pos": "FW", "overall": 78, "attrs": { "pace": 74, "shooting": 79, "passing": 62, "dribbling": 66, "defending": 40, "physical": 84 } },
+      { "id": "kor-hwang-hc", "name": "황희찬", "pos": "FW", "overall": 81, "attrs": { "pace": 91, "shooting": 79, "passing": 70, "dribbling": 82, "defending": 44, "physical": 76 } },
+      { "id": "kor-hwang-ib", "name": "황인범", "pos": "MF", "overall": 79, "attrs": { "pace": 70, "shooting": 70, "passing": 82, "dribbling": 78, "defending": 66, "physical": 68 } },
+      { "id": "kor-son-jh", "name": "손준호", "pos": "MF", "overall": 76, "attrs": { "pace": 66, "shooting": 66, "passing": 76, "dribbling": 70, "defending": 74, "physical": 74 } },
+      { "id": "kor-kwon-ch", "name": "권창훈", "pos": "MF", "overall": 74, "attrs": { "pace": 74, "shooting": 72, "passing": 74, "dribbling": 78, "defending": 50, "physical": 62 } },
+      { "id": "kor-song-mg", "name": "송민규", "pos": "FW", "overall": 74, "attrs": { "pace": 80, "shooting": 70, "passing": 68, "dribbling": 76, "defending": 42, "physical": 63 } },
+      { "id": "kor-cho-ym", "name": "조유민", "pos": "DF", "overall": 73, "attrs": { "pace": 66, "shooting": 35, "passing": 64, "dribbling": 56, "defending": 75, "physical": 78 } }
+    ]
+  },
+  "them": {
+    "teamCode": "POR",
+    "teamName": "포르투갈",
+    "year": 2022,
+    "players": [
+      { "id": "por-costa", "name": "디오구 코스타", "pos": "GK", "overall": 84, "attrs": { "pace": 58, "shooting": 22, "passing": 74, "dribbling": 52, "defending": 84, "physical": 80 } },
+      { "id": "por-cancelo", "name": "칸셀루", "pos": "DF", "overall": 86, "attrs": { "pace": 84, "shooting": 62, "passing": 84, "dribbling": 85, "defending": 78, "physical": 74 } },
+      { "id": "por-dias", "name": "후벤 디아스", "pos": "DF", "overall": 87, "attrs": { "pace": 74, "shooting": 40, "passing": 78, "dribbling": 66, "defending": 88, "physical": 86 } },
+      { "id": "por-pepe", "name": "페페", "pos": "DF", "overall": 82, "attrs": { "pace": 66, "shooting": 42, "passing": 72, "dribbling": 60, "defending": 85, "physical": 84 } },
+      { "id": "por-guerreiro", "name": "게레이루", "pos": "DF", "overall": 82, "attrs": { "pace": 78, "shooting": 66, "passing": 82, "dribbling": 82, "defending": 74, "physical": 68 } },
+      { "id": "por-bsilva", "name": "베르나르두 실바", "pos": "MF", "overall": 88, "attrs": { "pace": 78, "shooting": 76, "passing": 87, "dribbling": 89, "defending": 66, "physical": 66 } },
+      { "id": "por-palhinha", "name": "팔리냐", "pos": "MF", "overall": 83, "attrs": { "pace": 66, "shooting": 66, "passing": 74, "dribbling": 68, "defending": 85, "physical": 84 } },
+      { "id": "por-horta", "name": "히카르두 오르타", "pos": "MF", "overall": 78, "attrs": { "pace": 76, "shooting": 74, "passing": 78, "dribbling": 80, "defending": 58, "physical": 66 } },
+      { "id": "por-vitinha", "name": "비티냐", "pos": "MF", "overall": 80, "attrs": { "pace": 72, "shooting": 72, "passing": 84, "dribbling": 82, "defending": 64, "physical": 62 } },
+      { "id": "por-gramos", "name": "곤살루 하무스", "pos": "FW", "overall": 81, "attrs": { "pace": 82, "shooting": 82, "passing": 72, "dribbling": 80, "defending": 42, "physical": 78 } },
+      { "id": "por-felix", "name": "주앙 펠릭스", "pos": "FW", "overall": 83, "attrs": { "pace": 84, "shooting": 80, "passing": 78, "dribbling": 86, "defending": 40, "physical": 66 } }
+    ]
+  }
+}
