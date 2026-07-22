@@ -1,0 +1,5 @@
+.git
+docs
+web/node_modules
+web/dist
+server-data

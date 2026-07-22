@@ -1,0 +1,16 @@
+services:
+  web:
+    build:
+      context: .
+      dockerfile: web/Dockerfile
+    ports:
+      - "8080:80"
+    restart: unless-stopped
+
+  # 리더보드(여유 기능) 채택 시에만: docker compose --profile leaderboard up -d
+  server:
+    profiles: [leaderboard]
+    build: ./server
+    volumes:
+      - ./server-data:/data
+    restart: unless-stopped

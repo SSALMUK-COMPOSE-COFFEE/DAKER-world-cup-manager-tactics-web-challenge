@@ -1,0 +1,13 @@
+# Cloudflare Tunnel이 호스트에서 localhost:8080 → 이 컨테이너로 프록시하므로
+# 컨테이너 안에서는 평문 HTTP만 서빙한다(자동 HTTPS 불필요).
+:80 {
+	root * /srv
+	encode gzip
+	try_files {path} /index.html
+	file_server
+
+	# 리더보드 채택 시 주석 해제
+	# handle /api/* {
+	# 	reverse_proxy server:8000
+	# }
+}
