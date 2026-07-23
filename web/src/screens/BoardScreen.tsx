@@ -10,6 +10,7 @@ import { lineupSeed } from '../engine/hash'
 import { FORMATIONS } from '../engine/formations'
 import { ShareButton } from '../components/ShareButton'
 import { PlayerDetail } from '../components/PlayerDetail'
+import { haptics } from '../lib/haptics'
 import type { EnginePlayer } from '../engine/types'
 
 export function BoardScreen() {
@@ -49,8 +50,10 @@ export function BoardScreen() {
     if (pendingSub) {
       substitute(pendingSub, playerId)
       setPendingSub(null)
+      haptics.select()
       return
     }
+    haptics.tap()
     setDetailId((cur) => (cur === playerId ? null : playerId))
   }
 
@@ -150,12 +153,12 @@ export function BoardScreen() {
               <button
                 key={name}
                 className={`chip ${formation === name ? 'active' : ''}`}
-                onClick={() => setFormation(name)}
+                onClick={() => { haptics.select(); setFormation(name) }}
               >
                 {name}
               </button>
             ))}
-            <button className="chip" onClick={resetBoard}>초기화</button>
+            <button className="chip" onClick={() => { haptics.tap(); resetBoard() }}>초기화</button>
           </div>
         </aside>
       </div>
@@ -172,7 +175,7 @@ export function BoardScreen() {
                   key={id}
                   className={`bench-card ${pendingSub === id ? 'active' : ''}`}
                   disabled={subsLeft <= 0}
-                  onClick={() => setPendingSub(pendingSub === id ? null : id)}
+                  onClick={() => { haptics.tap(); setPendingSub(pendingSub === id ? null : id) }}
                 >
                   <b>{p.overall}</b>
                   <span>{p.name}</span>
@@ -183,7 +186,7 @@ export function BoardScreen() {
           </div>
           {pendingSub && <p className="bench-hint">교체할 필드 선수를 선택하세요 (GK 제외)</p>}
         </div>
-        <button className="whistle-btn" onClick={whistle}>
+        <button className="whistle-btn" onClick={() => { haptics.whistle(); whistle() }}>
           휘슬
         </button>
       </footer>

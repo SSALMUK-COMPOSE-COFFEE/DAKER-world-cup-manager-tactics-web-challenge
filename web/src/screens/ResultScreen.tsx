@@ -9,6 +9,7 @@ import { compositeBreakdown, explainResult } from '../engine/report'
 import { SimPitch } from '../components/SimPitch'
 import { LeaderboardPanel } from '../components/LeaderboardPanel'
 import { ShareButton } from '../components/ShareButton'
+import { haptics } from '../lib/haptics'
 
 const KIND_ICON: Record<string, string> = {
   goal: '⚽',
@@ -69,6 +70,22 @@ export function ResultScreen() {
     const t = setTimeout(() => setStep((s) => s + 1), step === 0 ? 500 : 2000)
     return () => clearTimeout(t)
   }, [phase, step, events.length])
+
+  // 리플레이에서 새 장면이 뜰 때 득점/실점에 촉각 반응
+  useEffect(() => {
+    if (phase !== 'sim' || step === 0) return
+    const ev = events[step - 1]
+    if (ev?.kind === 'goal') haptics.goal()
+    else if (ev?.kind === 'goal-against') haptics.goalAgainst()
+  }, [phase, step, events])
+
+  // 결과 공개 시 도전장 대결 성패에 촉각 반응
+  useEffect(() => {
+    if (phase !== 'reveal' || !challenge || !engine) return
+    const diff = engine.compositeFinal - challenge.score
+    if (diff > 0) haptics.win()
+    else if (diff < 0) haptics.lose()
+  }, [phase, challenge, engine])
 
   const verdict = useMemo(() => {
     if (!engine) return null
