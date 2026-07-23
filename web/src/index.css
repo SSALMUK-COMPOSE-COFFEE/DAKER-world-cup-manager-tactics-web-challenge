@@ -1110,6 +1110,58 @@ button {
   line-height: 1.6;
 }
 
+/* ── 감독 등급 + 칭호 ─────────────── */
+.manager-grade {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  width: 100%;
+  padding: 14px 16px;
+  border-radius: 16px;
+  background: var(--panel);
+  border: 1px solid var(--grade-color, var(--line));
+  box-shadow: 0 0 0 1px color-mix(in srgb, var(--grade-color, var(--line)) 30%, transparent) inset;
+}
+
+.grade-badge {
+  flex: none;
+  width: 56px;
+  height: 56px;
+  display: grid;
+  place-items: center;
+  border-radius: 14px;
+  font-size: 34px;
+  font-weight: 900;
+  line-height: 1;
+  color: #0b1020;
+  background: var(--grade-color, var(--text-dim));
+  box-shadow: 0 6px 18px color-mix(in srgb, var(--grade-color, #000) 45%, transparent);
+}
+
+.grade-title {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.grade-title b {
+  font-size: 18px;
+  color: var(--grade-color, var(--text));
+}
+
+.grade-title span {
+  font-size: 13px;
+  color: var(--text-dim);
+  line-height: 1.4;
+}
+
+/* 등급별 색상 — S 골드, A 청록, B 블루, C 그레이, D 딤 */
+.grade-S { --grade-color: #ffd23f; }
+.grade-A { --grade-color: #2dd4bf; }
+.grade-B { --grade-color: #38bdf8; }
+.grade-C { --grade-color: #94a0c2; }
+.grade-D { --grade-color: #6b7794; }
+
 .history-box {
   background: var(--panel);
   border: 1px solid var(--line);

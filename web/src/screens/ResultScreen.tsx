@@ -6,6 +6,7 @@ import { pickComment } from '../engine/comments'
 import { lineupSeed } from '../engine/hash'
 import { simulateTimeline, displayMinute } from '../engine/simulation'
 import { compositeBreakdown, explainResult } from '../engine/report'
+import { gradeOf, managerTitle } from '../engine/grade'
 import { SimPitch } from '../components/SimPitch'
 import { LeaderboardPanel } from '../components/LeaderboardPanel'
 import { ShareButton } from '../components/ShareButton'
@@ -167,6 +168,8 @@ export function ResultScreen() {
   // ── 2단계: 결과 공개 + 감독 리포트 ──
   const breakdown = compositeBreakdown(engine, match.difficulty)
   const reasons = explainResult(engine)
+  const grade = gradeOf(engine.compositeFinal)
+  const title = managerTitle(engine)
 
   return (
     <div className="screen result">
@@ -184,6 +187,19 @@ export function ResultScreen() {
           {result.resultScoreUs} : {result.resultScoreThem}
         </b>
         <span>{players.them.teamName}</span>
+      </motion.div>
+
+      <motion.div
+        className={`manager-grade grade-${grade}`}
+        initial={{ scale: 0.5, opacity: 0 }}
+        animate={{ scale: 1, opacity: 1 }}
+        transition={{ delay: 0.4, type: 'spring', stiffness: 220, damping: 14 }}
+      >
+        <span className="grade-badge">{grade}</span>
+        <div className="grade-title">
+          <b>{title.title}</b>
+          <span>{title.flavor}</span>
+        </div>
       </motion.div>
 
       <motion.p className="result-narrative" initial={{ opacity: 0 }} animate={{ opacity: 1 }} transition={{ delay: 0.5 }}>
