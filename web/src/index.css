@@ -1155,12 +1155,12 @@ button {
   line-height: 1.4;
 }
 
-/* 등급별 색상 — S 골드, A 청록, B 블루, C 그레이, D 딤 */
+/* 등급별 색상 — 레어리티 램프(골드→레드→퍼플→블루→그린) */
 .grade-S { --grade-color: #ffd23f; }
-.grade-A { --grade-color: #2dd4bf; }
-.grade-B { --grade-color: #38bdf8; }
-.grade-C { --grade-color: #94a0c2; }
-.grade-D { --grade-color: #6b7794; }
+.grade-A { --grade-color: #f5484f; }
+.grade-B { --grade-color: #a855f7; }
+.grade-C { --grade-color: #38bdf8; }
+.grade-D { --grade-color: #34d399; }
 
 .history-box {
   background: var(--panel);
