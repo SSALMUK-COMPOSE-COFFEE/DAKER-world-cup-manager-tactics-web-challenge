@@ -11,6 +11,7 @@ import { FORMATIONS } from '../engine/formations'
 import { ShareButton } from '../components/ShareButton'
 import { PlayerDetail } from '../components/PlayerDetail'
 import { haptics } from '../lib/haptics'
+import { sound, isMuted, toggleMute } from '../lib/sound'
 import type { EnginePlayer } from '../engine/types'
 
 export function BoardScreen() {
@@ -22,6 +23,7 @@ export function BoardScreen() {
   const [pendingSub, setPendingSub] = useState<string | null>(null)
   const [showHeatmap, setShowHeatmap] = useState(true)
   const [detailId, setDetailId] = useState<string | null>(null)
+  const [muted, setMuted] = useState(isMuted())
 
   const heatmap = useMemo(() => {
     if (!match) return null
@@ -51,9 +53,11 @@ export function BoardScreen() {
       substitute(pendingSub, playerId)
       setPendingSub(null)
       haptics.select()
+      sound.slide()
       return
     }
     haptics.tap()
+    sound.tick()
     setDetailId((cur) => (cur === playerId ? null : playerId))
   }
 
@@ -78,6 +82,13 @@ export function BoardScreen() {
           <ShareButton scenarioId={match.id} lineup={lineup} squad={players.us.players} />
           <button className="ghost-btn small" onClick={() => setShowHeatmap((v) => !v)}>
             {showHeatmap ? '히트맵 끄기' : '히트맵 켜기'}
+          </button>
+          <button
+            className="ghost-btn small"
+            aria-label={muted ? '소리 켜기' : '소리 끄기'}
+            onClick={() => setMuted(toggleMute())}
+          >
+            {muted ? '🔇' : '🔊'}
           </button>
         </div>
       </header>
@@ -153,12 +164,12 @@ export function BoardScreen() {
               <button
                 key={name}
                 className={`chip ${formation === name ? 'active' : ''}`}
-                onClick={() => { haptics.select(); setFormation(name) }}
+                onClick={() => { haptics.select(); sound.slide(); setFormation(name) }}
               >
                 {name}
               </button>
             ))}
-            <button className="chip" onClick={() => { haptics.tap(); resetBoard() }}>초기화</button>
+            <button className="chip" onClick={() => { haptics.tap(); sound.tick(); resetBoard() }}>초기화</button>
           </div>
         </aside>
       </div>
@@ -175,7 +186,7 @@ export function BoardScreen() {
                   key={id}
                   className={`bench-card ${pendingSub === id ? 'active' : ''}`}
                   disabled={subsLeft <= 0}
-                  onClick={() => { haptics.tap(); setPendingSub(pendingSub === id ? null : id) }}
+                  onClick={() => { haptics.tap(); sound.tick(); setPendingSub(pendingSub === id ? null : id) }}
                 >
                   <b>{p.overall}</b>
                   <span>{p.name}</span>
@@ -186,7 +197,7 @@ export function BoardScreen() {
           </div>
           {pendingSub && <p className="bench-hint">교체할 필드 선수를 선택하세요 (GK 제외)</p>}
         </div>
-        <button className="whistle-btn" onClick={() => { haptics.whistle(); whistle() }}>
+        <button className="whistle-btn" onClick={() => { haptics.whistle(); sound.whistle(); whistle() }}>
           휘슬
         </button>
       </footer>

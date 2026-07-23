@@ -1,6 +1,7 @@
 import { useEffect } from 'react'
 import { useGameStore } from './store/gameStore'
 import { decodeName } from './data/share'
+import { initSound } from './lib/sound'
 import { IntroScreen } from './screens/IntroScreen'
 import { BriefingScreen } from './screens/BriefingScreen'
 import { BoardScreen } from './screens/BoardScreen'
@@ -11,6 +12,7 @@ export default function App() {
   const init = useGameStore((s) => s.init)
 
   useEffect(() => {
+    initSound()
     void init().then(() => {
       // 도전장 링크(#t=...&n=...)로 진입한 경우 해당 전술을 보드에 로드
       const m = location.hash.match(/^#t=([^&]+)(?:&n=([^&]+))?$/)

@@ -10,6 +10,7 @@ import { SimPitch } from '../components/SimPitch'
 import { LeaderboardPanel } from '../components/LeaderboardPanel'
 import { ShareButton } from '../components/ShareButton'
 import { haptics } from '../lib/haptics'
+import { sound } from '../lib/sound'
 
 const KIND_ICON: Record<string, string> = {
   goal: '⚽',
@@ -75,16 +76,26 @@ export function ResultScreen() {
   useEffect(() => {
     if (phase !== 'sim' || step === 0) return
     const ev = events[step - 1]
-    if (ev?.kind === 'goal') haptics.goal()
-    else if (ev?.kind === 'goal-against') haptics.goalAgainst()
+    if (ev?.kind === 'goal') {
+      haptics.goal()
+      sound.cheer()
+    } else if (ev?.kind === 'goal-against') {
+      haptics.goalAgainst()
+      sound.thud()
+    }
   }, [phase, step, events])
 
   // 결과 공개 시 도전장 대결 성패에 촉각 반응
   useEffect(() => {
     if (phase !== 'reveal' || !challenge || !engine) return
     const diff = engine.compositeFinal - challenge.score
-    if (diff > 0) haptics.win()
-    else if (diff < 0) haptics.lose()
+    if (diff > 0) {
+      haptics.win()
+      sound.win()
+    } else if (diff < 0) {
+      haptics.lose()
+      sound.lose()
+    }
   }, [phase, challenge, engine])
 
   const verdict = useMemo(() => {

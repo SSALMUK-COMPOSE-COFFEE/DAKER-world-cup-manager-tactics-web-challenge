@@ -1,4 +1,5 @@
 import { useGameStore } from '../store/gameStore'
+import { resumeAudio } from '../lib/sound'
 
 export function BriefingScreen() {
   const match = useGameStore((s) => s.match)
@@ -29,7 +30,7 @@ export function BriefingScreen() {
           <b>{match.us.subsLeft}</b>장
         </p>
       </div>
-      <button className="primary-btn" onClick={() => goto('board')}>
+      <button className="primary-btn" onClick={() => { resumeAudio(); goto('board') }}>
         감독 부임
       </button>
       <button className="ghost-btn" onClick={() => goto('intro')}>

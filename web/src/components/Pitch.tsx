@@ -1,5 +1,6 @@
 import { useRef, type ReactNode } from 'react'
 import { haptics } from '../lib/haptics'
+import { sound } from '../lib/sound'
 
 /** 좌표 변환 컨텍스트를 제공하는 피치 컨테이너 + SVG 라인 마킹 */
 export function Pitch({
@@ -53,7 +54,10 @@ export function Pitch({
 
   const endDrag = () => {
     // 실제로 옮겨 놓았을 때만 촉각 확인(탭은 handleTokenClick 쪽에서 처리)
-    if (dragging.current && moved.current) haptics.tap()
+    if (dragging.current && moved.current) {
+      haptics.tap()
+      sound.tick()
+    }
     dragging.current = null
     cancelAnimationFrame(raf.current)
     ref.current?.classList.remove('dragging')
