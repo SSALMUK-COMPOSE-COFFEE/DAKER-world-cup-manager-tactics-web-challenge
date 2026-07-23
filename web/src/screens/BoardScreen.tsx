@@ -9,6 +9,7 @@ import { pickComment } from '../engine/comments'
 import { lineupSeed } from '../engine/hash'
 import { FORMATIONS } from '../engine/formations'
 import { ShareButton } from '../components/ShareButton'
+import { PlayerDetail } from '../components/PlayerDetail'
 import type { EnginePlayer } from '../engine/types'
 
 export function BoardScreen() {
@@ -19,6 +20,7 @@ export function BoardScreen() {
   } = useGameStore()
   const [pendingSub, setPendingSub] = useState<string | null>(null)
   const [showHeatmap, setShowHeatmap] = useState(true)
+  const [detailId, setDetailId] = useState<string | null>(null)
 
   const heatmap = useMemo(() => {
     if (!match) return null
@@ -47,8 +49,17 @@ export function BoardScreen() {
     if (pendingSub) {
       substitute(pendingSub, playerId)
       setPendingSub(null)
+      return
     }
+    setDetailId((cur) => (cur === playerId ? null : playerId))
   }
+
+  const detailSlot = detailId
+    ? lineup.find((s) => s.playerId === detailId) ??
+      match.them.displayLineup.find((s) => s.playerId === detailId)
+    : undefined
+  const detailPlayer = detailId ? playersById.get(detailId) : undefined
+  const detailSide = detailSlot && lineup.some((s) => s.playerId === detailId) ? 'us' : 'them'
 
   return (
     <div className="screen board">
@@ -95,7 +106,15 @@ export function BoardScreen() {
         >
           {match.them.displayLineup.map((slot) => {
             const p = playersById.get(slot.playerId)
-            return p ? <PlayerToken key={slot.playerId} slot={slot} player={p} side="them" /> : null
+            return p ? (
+              <PlayerToken
+                key={slot.playerId}
+                slot={slot}
+                player={p}
+                side="them"
+                onClick={() => handleTokenClick(slot.playerId)}
+              />
+            ) : null
           })}
           {lineup.map((slot) => {
             const p = playersById.get(slot.playerId)
@@ -110,6 +129,14 @@ export function BoardScreen() {
               />
             ) : null
           })}
+          {detailPlayer && detailSlot && (
+            <PlayerDetail
+              player={detailPlayer}
+              role={detailSlot.role}
+              side={detailSide}
+              onClose={() => setDetailId(null)}
+            />
+          )}
         </Pitch>
 
         <aside className="board-panel">

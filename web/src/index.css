@@ -416,6 +416,15 @@ button {
   cursor: grab;
 }
 
+/* 포메이션 프리셋 변경 시 부드러운 슬라이드. 드래그 중(.dragging)에는 즉각 추종 */
+.board .pitch .token {
+  transition: left 0.45s cubic-bezier(0.22, 1, 0.36, 1), top 0.45s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.board .pitch.dragging .token {
+  transition: none;
+}
+
 .token.them {
   opacity: 0.55;
   z-index: 1;
@@ -470,6 +479,76 @@ button {
   text-shadow: 0 1px 3px rgba(0, 0, 0, 0.8);
   white-space: nowrap;
 }
+
+/* ── Player detail ─────────────────── */
+.player-detail {
+  position: absolute;
+  left: 50%;
+  bottom: 8px;
+  transform: translateX(-50%);
+  width: min(300px, 92%);
+  background: rgba(13, 19, 38, 0.94);
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  padding: 12px 14px;
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.5);
+  animation: detail-in 0.18s ease-out;
+}
+
+@keyframes detail-in {
+  from { opacity: 0; transform: translateX(-50%) translateY(8px); }
+  to { opacity: 1; transform: translateX(-50%) translateY(0); }
+}
+
+.player-detail-head {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.player-detail-overall {
+  font-size: 24px;
+  font-weight: 900;
+  color: var(--accent);
+}
+
+.player-detail.them .player-detail-overall {
+  color: var(--them);
+}
+
+.player-detail-name {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+}
+
+.player-detail-name b {
+  font-size: 15px;
+}
+
+.player-detail-name span {
+  font-size: 11px;
+  color: var(--text-dim);
+}
+
+.player-detail-attrs {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.player-detail-attrs .gauge {
+  grid-template-columns: 44px 1fr 26px;
+  font-size: 12px;
+}
+
+.gauge-fill.attr[data-tier='high'] { background: var(--us); }
+.gauge-fill.attr[data-tier='mid'] { background: var(--accent); }
+.gauge-fill.attr[data-tier='low'] { background: var(--text-dim); }
 
 /* ── Panel / gauges ────────────────── */
 .board-panel {

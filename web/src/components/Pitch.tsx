@@ -14,6 +14,8 @@ export function Pitch({
   const ref = useRef<HTMLDivElement>(null)
   const dragging = useRef<string | null>(null)
   const raf = useRef(0)
+  const startPos = useRef({ x: 0, y: 0 })
+  const moved = useRef(false)
 
   const toPitch = (clientX: number, clientY: number) => {
     const rect = ref.current!.getBoundingClientRect()
@@ -28,11 +30,18 @@ export function Pitch({
     if (!el || !onDragTo) return
     dragging.current = el.dataset.draggableId!
     el.setPointerCapture?.(e.pointerId)
+    startPos.current = { x: e.clientX, y: e.clientY }
+    moved.current = false
+    // 드래그 중에는 토큰 위치 트랜지션(포메이션 슬라이드용)을 끈다 — 포인터 추종 지연 방지
+    ref.current?.classList.add('dragging')
   }
 
   const handlePointerMove = (e: React.PointerEvent) => {
     if (!dragging.current || !onDragTo) return
     const { clientX, clientY } = e
+    // 4px 이상 움직였을 때만 드래그로 간주 — 탭(선수 상세)과 구분
+    if (Math.hypot(clientX - startPos.current.x, clientY - startPos.current.y) < 4 && !moved.current) return
+    moved.current = true
     cancelAnimationFrame(raf.current)
     raf.current = requestAnimationFrame(() => {
       if (!dragging.current) return
@@ -44,6 +53,7 @@ export function Pitch({
   const endDrag = () => {
     dragging.current = null
     cancelAnimationFrame(raf.current)
+    ref.current?.classList.remove('dragging')
   }
 
   return (
@@ -54,6 +64,13 @@ export function Pitch({
       onPointerMove={handlePointerMove}
       onPointerUp={endDrag}
       onPointerCancel={endDrag}
+      onClickCapture={(e) => {
+        // 실제 드래그였다면 뒤따르는 click을 삼켜 상세 카드 오작동 방지
+        if (moved.current) {
+          e.stopPropagation()
+          moved.current = false
+        }
+      }}
     >
       <svg className="pitch-lines" viewBox="0 0 105 68" preserveAspectRatio="none">
         <rect x="0.5" y="0.5" width="104" height="67" />
