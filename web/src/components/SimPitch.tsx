@@ -8,6 +8,7 @@ const clamp = (v: number) => Math.min(97, Math.max(3, v))
 
 /**
  * 시뮬레이션 리플레이 배치 계산.
+ * 킥오프(step 0)에는 감독이 짠 포메이션을 그대로 보여준 뒤,
  * 장면마다 팀별로 볼과 가장 가까운 2명(+장면 주인공)은 볼 곁까지 달려가고,
  * 나머지는 볼 방향으로 은은하게 쏠린다. 전부 결정론적(시드=선수id+step).
  * 실제 이동은 CSS 트랜지션이 보간한다.
@@ -18,6 +19,9 @@ function placeTeam(
   step: number,
   actorId: string | undefined,
 ): LineupSlot[] {
+  // 첫 프레임: 드래그한 원본 배치를 그대로 노출 — "내 전술 → 경기 전개" 연결감
+  if (step === 0) return slots
+
   const outfield = slots.filter((s) => s.role !== 'GK')
   const byDist = [...outfield].sort(
     (a, b) => Math.hypot(ball.x - a.x, ball.y - a.y) - Math.hypot(ball.x - b.x, ball.y - b.y),
