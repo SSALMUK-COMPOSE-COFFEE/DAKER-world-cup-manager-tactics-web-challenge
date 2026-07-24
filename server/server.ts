@@ -13,7 +13,7 @@ const ROOT = join(dirname(fileURLToPath(import.meta.url)), '..')
 const PORT = Number(process.env.PORT ?? 8000)
 const DB_PATH = process.env.SQLITE_PATH ?? join(ROOT, 'server-data', 'planb.db')
 const COOKIE = 'planb_sid'
-// hajin.xyz에 다른 서비스들이 함께 살므로 쿠키를 /planb 하위로 격리
+// hajin.xyz에 다른 서비스들이 함께 살므로 쿠키를 배포 경로 하위로 격리
 const COOKIE_PATH = process.env.COOKIE_PATH ?? '/'
 
 // ── 시나리오 로드(기동 시 1회) ─────────────────────────────

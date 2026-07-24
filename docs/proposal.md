@@ -148,13 +148,13 @@
         └─ TypeScript : POST /api/scores · GET /api/leaderboard (node:http + node:sqlite, 의존성 0)
                         웹과 동일한 룰 엔진을 그대로 import해 서버가 점수 재계산(치팅 방지)
                         익명 세션 쿠키(uuid, httponly) — 로그인 없이 식별
-  [Cloudflare Tunnel] → 안정적 공개 HTTPS URL (심사 기간 8/18까지 유지)
+  [호스트 nginx + Let's Encrypt] → https://hajin.xyz/world-cup-manager-tactics-web-challenge (심사 기간 8/18까지 유지)
 ```
 
 - **프론트**: React + Vite + TypeScript, 상태 `zustand`, 드래그 `dnd-kit`, 애니메이션 `framer-motion`, 히트맵 `canvas`.
 - **백엔드(여유 기능)**: 리더보드를 채택할 때만 TypeScript 단일 파일 서버(`node:http` + `node:sqlite`, 외부 의존성 0). 클라이언트는 선수 배치(라인업)만 전송하고, 서버가 웹과 **동일한 룰 엔진**으로 점수를 재계산해 저장한다 — 클라이언트가 보낸 점수를 신뢰하지 않으므로 점수 위조 불가. 코어 앱은 백엔드 없이 완결 — 최악의 경우 순수 정적 배포로도 심사 가능.
 - **저장소**: 클라 저장 `localStorage`.
-- **배포**: n150 개인서버 + Cloudflare Tunnel + Caddy + systemd(자동 재시작). 정적 서빙만으로 시작.
+- **배포**: n150 개인서버 — 호스트 nginx(Let's Encrypt HTTPS)가 경로 프리픽스를 벗겨 Docker(Caddy 정적 서빙)로 프록시. `restart: unless-stopped`로 자동 재시작. 정적 서빙만으로 시작.
 
 > **핵심 원칙**: 로그인·결제 없이 심사 가능 / 심사자 키 없이 접근 / 동적 기능은 클라에서 항상 동작 / 배포 URL 8/18까지 상시 접근.
 
@@ -195,7 +195,7 @@ LLM 없이도 결과가 나오는 **결정론적 규칙 엔진**. 재현 가능�
 | 기간 | 작업 |
 |---|---|
 | ~**7/27 10:00** | **기획서 PDF 제출**(본 문서 정리) + 폴더 구조/데이터 스키마 확정 + 전술 보드 뼈대 |
-| 7/28 ~ 8/1 | 룰 엔진 + 실시간 지표(히트맵/xG) + 휘슬 결과 분기 + FIFA 스타일링. **7/30 뼈대 선배포** — Tunnel/Caddy 외부 접근 + 모바일 터치 드래그를 미리 검증(막판 배포 트러블 원천 차단) |
+| 7/28 ~ 8/1 | 룰 엔진 + 실시간 지표(히트맵/xG) + 휘슬 결과 분기 + FIFA 스타일링. **7/30 뼈대 선배포** — nginx/Caddy 외부 접근 + 모바일 터치 드래그를 미리 검증(막판 배포 트러블 원천 차단) |
 | 8/2 | 시연영상(유튜브) 촬영, 폴리시, 최종 배포 점검(7/30에 검증한 파이프라인 재사용) |
 | ~**8/3 10:00** | **최종 산출물 제출**(배포 URL + GitHub + 유튜브). 이후 커밋 금지(실격) |
 | ~8/18 | 심사 기간 — 배포 URL 상시 유지 |

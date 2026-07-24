@@ -1,7 +1,7 @@
 import type { CommentEntry } from '../engine/comments'
 import type { MatchData, PlayersData, ScenarioMeta } from '../engine/types'
 
-// 배포 프리픽스(/planb/) 대응 — vite base 설정을 따라간다
+// 배포 프리픽스 대응 — vite base 설정을 따라간다
 const BASE = import.meta.env.BASE_URL
 
 async function fetchJson<T>(path: string): Promise<T> {

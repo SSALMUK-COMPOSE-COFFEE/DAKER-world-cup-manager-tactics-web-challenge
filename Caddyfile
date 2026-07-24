@@ -1,5 +1,6 @@
-# Cloudflare Tunnel이 호스트에서 localhost:18085 → 이 컨테이너로 프록시하므로
-# 컨테이너 안에서는 평문 HTTP만 서빙한다(자동 HTTPS 불필요).
+# 호스트 nginx가 hajin.xyz/world-cup-manager-tactics-web-challenge/ 프리픽스를 벗겨
+# 127.0.0.1:18085 → 이 컨테이너로 프록시. HTTPS는 호스트(Let's Encrypt) 담당이므로
+# 컨테이너 안에서는 평문 HTTP만 서빙한다.
 :80 {
 	root * /srv
 	encode gzip

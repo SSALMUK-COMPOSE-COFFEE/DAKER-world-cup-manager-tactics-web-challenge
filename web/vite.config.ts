@@ -3,9 +3,10 @@ import react from '@vitejs/plugin-react'
 import fs from 'node:fs'
 import path from 'node:path'
 
-// 배포 경로: hajin.xyz/planb/ — 호스트 nginx가 /planb/ 프리픽스를 벗겨서 프록시하므로
-// 컨테이너(Caddy)와 프로덕션 서버는 루트 기준으로 동작한다. dev는 vite가 BASE 하위에서 서빙.
-const BASE = '/planb/'
+// 배포 경로: hajin.xyz/world-cup-manager-tactics-web-challenge/ — 호스트 nginx가
+// 프리픽스를 벗겨서 127.0.0.1:18085로 프록시하므로 컨테이너(Caddy)와 프로덕션 서버는
+// 루트 기준으로 동작한다. dev는 vite가 BASE 하위에서 서빙.
+const BASE = '/world-cup-manager-tactics-web-challenge/'
 
 // 시나리오 JSON은 레포 루트 data/에 있다(웹 코드와 분리, 검증 스크립트가 직접 읽음).
 // dev에서는 {BASE}data/*를 루트 data/에서 서빙하고, build 시 dist/data로 복사한다.

@@ -15,7 +15,7 @@ services:
       context: .
       dockerfile: server/Dockerfile
     environment:
-      COOKIE_PATH: /planb
+      COOKIE_PATH: /world-cup-manager-tactics-web-challenge
     volumes:
       - ./server-data:/data
     restart: unless-stopped
