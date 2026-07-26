@@ -30,9 +30,7 @@ location /world-cup-manager-tactics-web-challenge/ {
 }
 ```
 
-적용 (자동): `sudo bash scripts/setup-nginx.sh`
-
-적용 (수동):
+적용:
 
 ```bash
 sudo nano /etc/nginx/sites-enabled/hajin.xyz   # 블록 추가
